@@ -1,0 +1,22 @@
+{% extends "display_topic.html" %}
+
+{% block title %}
+<title>AccessRecord table</title>
+{% endblock title %}
+
+            {% block Theading %}
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Date</th>
+            </tr>
+
+            {% for i in AR %}
+            <tr>
+                <td>{{ i.Name }}</td>
+                <td>{{ i.Author }}</td>
+                <td>{{ i.Date }}</td>
+            </tr>
+            {% endfor %}
+
+            {% endblock %}
