@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 from app1.models import *
+from django.db.models.functions import Length
 
 def insert_topic(request):
     tn = input('Enter a Topic Name : ')
@@ -49,8 +50,8 @@ def display_topic(request):
     return render(request, 'display_topic.html', d)
 
 def display_webpage(request):
-    webpage = Webpage.objects.all()
-    d = {'webpage': webpage}
+    LWO = Webpage.objects.all()
+    d = {'LWO': LWO}
     return render(request, 'display_webpage.html', d)
 
 def display_accessrecord(request):
