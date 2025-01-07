@@ -51,10 +51,29 @@ def display_topic(request):
 
 def display_webpage(request):
     LWO = Webpage.objects.all()
+    LWO = Webpage.objects.filter(Topic_name='cricket')
+    LWO = Webpage.objects.exclude(Topic_name='cricket')
+    LWO = Webpage.objects.all()[0:3:1]
+    LWO = Webpage.objects.all()[2:5:1]
+    LWO = Webpage.objects.all()[::-1]
+    LWO = Webpage.objects.all().order_by('Name')
+    LWO = Webpage.objects.all().order_by('-Name')
+    LWO = Webpage.objects.filter(Name__contains='s')
+    LWO = Webpage.objects.filter(Name__startswith='u')
+    LWO = Webpage.objects.filter(Name__endswith='n')
+    LWO = Webpage.objects.filter(id__range=(1,5))
+    LWO = Webpage.objects.filter(id__in=(2,3))
+    LWO = Webpage.objects.filter(Name__regex="^\wh+")
+    LWO = Webpage.objects.filter(Name__regex="n$")
+    LWO = Webpage.objects.all().order_by(Length('Name'))
+    LWO = Webpage.objects.all().order_by(Length('Name').desc())
     d = {'LWO': LWO}
     return render(request, 'display_webpage.html', d)
 
 def display_accessrecord(request):
     AR = AccessRecords.objects.all()
+    AR = AccessRecords.objects.filter(Date__month='12')
+    AR = AccessRecords.objects.filter(Date__year='2001')
+    AR = AccessRecords.objects.filter(Date__day='27')
     d = {'AR': AR}
     return render(request, 'display_accessrecords.html', d)
